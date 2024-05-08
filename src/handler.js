@@ -74,13 +74,42 @@ const addBookHandler = (request, h) => {
 };
 
 //KRITERIA 4: API dapat menampilkan seluruh buku
+/*
+   - Parameters changed from () to (request, h)
+   - Variable created: temp_books
+   - Variable created: returned_books
+   - Code created: temp_books.forEach()
+   - Response body modified:
 
-const getAllBooksHandler = () => ({
+   BEFORE:
+          data: {
+            books
+          }
+
+  AFTER:
+          data: {
+            books: returned_books
+          }
+*/
+const getAllBooksHandler = (request, h) => {
+  let temp_books = [...books];
+  let returned_books = [];
+
+  temp_books = temp_books.forEach((book, index)=>{
+    let { id, name, publisher } = temp_books[index];
+    returned_books = [ ...returned_books, {id: id, name: name, publisher: publisher}];
+  })
+
+  const response = h.response({
     status: 'success',
     data: {
-      books,
-    },
-  });
+      books: returned_books
+    }
+  })
+
+  response.code(200);
+  return response;
+};
 
 //KRITERIA 5: API dapat menampilkan detail buku
 

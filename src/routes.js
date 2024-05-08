@@ -24,20 +24,20 @@ const routes = [
 
     {
         method: 'GET',
-        path: '/books/{bookId}',
+        path: '/books/{id}',     // from bookId to id
         handler: getBookByIdHandler,
     },
 
     {
         method: 'PUT',
-        path: '/books/{bookId}',
+        path: '/books/{id}',    // from bookId to id
         handler: updateBookHandler,
     },
 
     
     {
         method: 'DELETE',
-        path: '/books/{bookId}',
+        path: '/books/{id}',    // from bookId to id
         handler: deleteBookHandler,
     },
 
